@@ -1,3 +1,6 @@
+// this is the script for Simple RC Car movements.
+
+// defining pins for the L298N Driver inputs
 #define A1 8
 #define A2 9
 #define APWM 5
@@ -21,9 +24,14 @@ void setup()
 
 void loop()
 {
+
+  // run the program till the bluetooth connection is active
   while(Serial.available() > 0)
   {
+    
+    // read the value coming in from the Serial connection
     int dir = Serial.parseInt();
+    
     if(Serial.read() == '\n')
     {
       if(dir == 0) //forward

@@ -1,11 +1,11 @@
-const int DS = 4;
-const int ST_CP = 7;
-const int SH_CP = 8;
+// this script is for controlling a chain of RGB led lights
 
-const int ledRed = 9;
-const int ledGreen = 10;
-const int ledBlue = 11;
+// defining the 74HC595 Shift Register input pins
+#define DS 4
+#define ST_CP 7
+#define SH_CP 8
 
+// defining the RGB led input pins (analog pins)
 #define REDPIN 9
 #define GREENPIN 10
 #define BLUEPIN 11
@@ -17,12 +17,12 @@ byte leds = 0;
 void setup()
 {
   Serial.begin(9600);
-  pinMode(ledRed, OUTPUT); 
-  digitalWrite(ledRed,HIGH);
-  pinMode(ledGreen, OUTPUT);
-  digitalWrite(ledGreen,HIGH); 
-  pinMode(ledBlue, OUTPUT); 
-  digitalWrite(ledBlue,HIGH);
+  pinMode(REDPIN, OUTPUT); 
+  digitalWrite(REDPIN,HIGH);
+  pinMode(GREENPIN, OUTPUT);
+  digitalWrite(GREENPIN,HIGH); 
+  pinMode(BLUEPIN, OUTPUT); 
+  digitalWrite(BLUEPIN,HIGH);
   pinMode(DS, OUTPUT);
   pinMode(ST_CP, OUTPUT);
   pinMode(SH_CP, OUTPUT);
@@ -43,9 +43,9 @@ void loop()
       green = 255 - constrain(green, 0, 255);
       blue = 255 - constrain(blue, 0, 255);
        
-      analogWrite(ledRed, red);
-      analogWrite(ledGreen, green);
-      analogWrite(ledBlue, blue);
+      analogWrite(REDPIN, red);
+      analogWrite(GREENPIN, green);
+      analogWrite(BLUEPIN, blue);
     }
   }
 }
